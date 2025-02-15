@@ -1,0 +1,97 @@
+import java.util.Random;
+
+public class Human {
+    private String name;
+    private String surname;
+    private int year;
+    private int iq;
+    private Pet pet;
+    private Human mother;
+    private Human father;
+    private String[][] schedule;
+
+    public Human() {
+        this.name = "Məlumat yoxdur";
+        this.surname = "Uyğun deyil";
+        this.year = -1;
+        this.iq = -1;
+        this.pet = null;
+        this.mother = null;
+        this.father = null;
+        this.schedule = new String[][]{{"Yoxdur", "Yoxdur"}};
+    }
+
+    public Human(String name, String surname, int year) {
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.iq = -1;
+        this.pet = new Pet();
+        this.mother = new Human();
+        this.father = new Human();
+        this.schedule = new String[][]{{"Yoxdur", "Yoxdur"}};
+    }
+
+    public Human(String name, String surname, int year, Human mother, Human father) {
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.mother = mother;
+        this.father = father;
+        this.iq = -1;
+        this.pet = new Pet();
+        this.schedule = new String[][]{{"Yoxdur", "Yoxdur"}};
+    }
+
+    public Human(String name, String surname, int year, int iq, Pet pet, Human mother, Human father, String[][] schedule) {
+        this.name = name;
+        this.surname = surname;
+        this.year = year;
+        this.iq = iq;
+        this.pet = pet;
+        this.mother = mother;
+        this.father = father;
+        this.schedule = schedule;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void greetPet() {
+        System.out.println("Salam, " + pet.getName());
+    }
+
+    public void describePet() {
+        String isSly = pet.getTrickLevel() > 50 ? "çox ağıllıdır" : "çox ağılsızdır";
+        System.out.println("Mənim " + pet.getSpecies() + "ım var. O, "
+            + pet.getAge() + " yaşındadır və " + isSly);
+    }
+
+    public boolean feedPet(boolean isFeedingTime) {
+        if (!isFeedingTime) {
+            Random rand = new Random();
+            int randomNum = rand.nextInt(101);
+            if (pet.getTrickLevel() > randomNum) {
+                isFeedingTime = true;
+            }
+        }
+
+        String output = isFeedingTime ? "Hmm... Mən " + name + "'in " + pet.getName() + "ni qidalandıracam"
+                                      : "Məncə " + name + "'in " + pet.getName() + " ac deyil.";
+        System.out.println(output);
+        return isFeedingTime;
+    }
+
+    @Override
+    public String toString() {
+        String motherName = (mother != null) ? mother.getName() + " " + mother.getSurname() : "Yoxdur";
+        String fatherName = (father != null) ? father.getName() + " " + father.getSurname() : "Yoxdur";
+        return "Human{name='" + name + "', surname='" + surname + "', year=" + year + ", iq=" + iq +
+               ", mother=" + motherName + ", father=" + fatherName + ", pet=" + pet.toString() + '}';
+    }
+}

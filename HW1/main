@@ -1,0 +1,46 @@
+public class Main {
+    public static void main(String[] args) {
+        // Birinci ailə
+        Human loretta = new Human("Sophie", "Henderson", 1950); // Yeni ad və il
+        Human jerome = new Human("Michael", "Whittaker", 1935); // Yeni ad və il
+        Human barney = new Human("David", "Stinson", 1985, loretta, jerome); // Yeni ad və il
+
+        // İkinci ailə
+        Human scherbatskySr = new Human("John", "Scherbatsky", 1940); // Yeni ad və il
+        Human genevieve = new Human("Isabelle", "Scherbatsky", 1942); // Yeni ad və il
+
+        // Ev heyvanı - it
+        Pet dog = new Pet("German Shepherd", "gs", 5, 80, new String[]{"play", "run", "fetch", "bark"}); // Yeni it tipi və təlimlər
+
+        // Robin üçün cədvəl
+        String[][] robinsSchedule = {
+                {"Monday", "Photography"},
+                {"Wednesday", "Yoga"},
+                {"Friday", "Traveling"},
+                {"Saturday", "Cooking"} // Yeni cədvəl
+        };
+
+        // Robin obyektinin yaradılması
+        Human robin = new Human("Clara", "Scherbatsky", 1990, 95, dog, genevieve, scherbatskySr, robinsSchedule); // Yeni ad və il
+
+        // Ailələrin çap edilməsi
+        System.out.println("Birinci Ailə:");
+        System.out.println(loretta);
+        System.out.println(jerome);
+        System.out.println(barney);
+        System.out.println("--------------------");
+
+        System.out.println("İkinci Ailə (ev heyvanı ilə):");
+        System.out.println(scherbatskySr);
+        System.out.println(genevieve);
+        System.out.println(robin);  // robin obyektini çap etmək üçün toString() metodunu çağırırıq
+        System.out.println(dog);
+
+        // Pet ilə bağlı metodların çağırılması
+        robin.greetPet();
+        robin.describePet();
+        dog.eat();
+        dog.respond();
+        dog.foul();
+    }
+}
