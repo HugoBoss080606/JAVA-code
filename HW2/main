@@ -6,13 +6,13 @@ public class Main {
         String[][] child1Schedule = { {"Monday", "School"}, {"Friday", "Play"} };
         String[][] child2Schedule = { {"Tuesday", "School"}, {"Thursday", "Play"} };
 
-        Human mother = new Human("Alice", "Smith", 1985, 120, motherSchedule);
-        Human father = new Human("John", "Smith", 1980, 130, fatherSchedule);
+        Human mother = new Human("Jane", "Morgan", 1985, 120, motherSchedule);
+        Human father = new Human("Arthur", "Morgan", 1980, 130, fatherSchedule);
 
         Family family = new Family(mother, father);
 
-        Human child1 = new Human("Emma", "Smith", 2010, 110, child1Schedule);
-        Human child2 = new Human("Liam", "Smith", 2012, 100, child2Schedule);
+        Human child1 = new Human("Emma", "Morgan", 2010, 110, child1Schedule);
+        Human child2 = new Human("Jack", "Morgan", 2012, 100, child2Schedule);
 
         family.addChild(child1);
         family.addChild(child2);
