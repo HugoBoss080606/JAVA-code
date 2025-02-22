@@ -1,0 +1,113 @@
+import java.util.*;
+
+public class Human {
+    private String firstName;
+    private String lastName;
+    private int birthYear;
+    private int intelligence;
+    private String[][] dailySchedule;
+    private Family family;
+
+    public Human() {}
+
+    public Human(String firstName, String lastName, int birthYear) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthYear = birthYear;
+    }
+
+    public Human(String firstName, String lastName, int birthYear, int intelligence, String[][] dailySchedule) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthYear = birthYear;
+        this.intelligence = intelligence;
+        this.dailySchedule = dailySchedule;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public int getBirthYear() {
+        return birthYear;
+    }
+    public int getIntelligence() {
+        return intelligence;
+    }
+    public String[][] getDailySchedule() {
+        return dailySchedule;
+    }
+    public Family getFamily() {
+        return family;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+    public void setDailySchedule(String[][] dailySchedule) {
+        this.dailySchedule = dailySchedule;
+    }
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+    public void greetPet() {
+        System.out.println("Hello, " + family.getPet().getNickname());
+    }
+
+    public void describePet() {
+        String slyness = family.getPet().getTrickLevel() > 50 ? "very sly" : "almost not sly";
+        System.out.println("I have a " + family.getPet().getSpecies() + ", age " + family.getPet().getAge() + ", he is " + slyness);
+    }
+
+    public boolean feedPet(boolean isMealTime) {
+        if (isMealTime) {
+            System.out.println("Hm... I will feed " + firstName + "'s " + family.getPet().getSpecies());
+            return true;
+        } else {
+            Random random = new Random();
+            int randomNum = random.nextInt(101);
+            if (family.getPet().getTrickLevel() > randomNum) {
+                System.out.println("Hm... I will feed " + firstName + "'s " + family.getPet().getSpecies());
+                return true;
+            } else {
+                System.out.println("I think " + firstName + "'s " + family.getPet().getSpecies() + " is not hungry.");
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Human{firstName='"+firstName+"', lastName='"+lastName+"', birthYear="+birthYear+", intelligence="+intelligence+ ", dailySchedule="+Arrays.deepToString(dailySchedule)+"}";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Human human = (Human) o;
+        return birthYear == human.birthYear && intelligence == human.intelligence && Objects.equals(firstName, human.firstName) && Objects.equals(lastName, human.lastName) && Arrays.deepEquals(dailySchedule, human.dailySchedule);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(firstName, lastName, birthYear, intelligence);
+        result = 31 * result + Arrays.deepHashCode(dailySchedule);
+        return result;
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        throw new UnsupportedOperationException("finalize() method is not supported in Human");
+    }
+}

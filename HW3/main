@@ -1,0 +1,48 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String[][] motherSchedule = {{DayOfWeek.MONDAY.name(), "Cooking"}, {DayOfWeek.TUESDAY.name(), "Horse Riding"}};
+        String[][] fatherSchedule = {{DayOfWeek.MONDAY.name(), "Hunting"}, {DayOfWeek.WEDNESDAY.name(), "Poker Night"}};
+        String[][] child1Schedule = {{DayOfWeek.MONDAY.name(), "Shooting Practice"}, {DayOfWeek.FRIDAY.name(), "Fishing"}};
+        String[][] child2Schedule = {{DayOfWeek.THURSDAY.name(), "Reading"}, {DayOfWeek.SATURDAY.name(), "Exploring"}};
+
+        Human mother = new Human("Abigail", "Roberts", 1877, 128, motherSchedule);
+        Human father = new Human("John", "Marston", 1873, 140, fatherSchedule);
+
+        Family family = new Family(mother, father);
+
+        Human child1 = new Human("Jack", "Marston", 1895, 118, child1Schedule);
+        Human child2 = new Human("Sadie", "Adler", 1880, 108, child2Schedule);
+
+        family.addChild(child1);
+        family.addChild(child2);
+
+        Pet pet = new Pet(Species.DOG, "Cain", 5, 80, new String[]{"Guarding", "Running"});
+        family.setPet(pet);
+
+        System.out.println("Family Information:");
+        System.out.println(family);
+
+        System.out.println("Deleting a child from the family:");
+        boolean deleted = family.deleteChild(child1);
+        System.out.println("Child deleted: " + deleted);
+        for (int i = 0; i < 10000000; i++) {
+            if (family.deleteChild(child1)) {
+                System.gc();
+            }
+        }
+        System.out.println("Updated Family Information:");
+        System.out.println(family);
+
+        System.out.println("Number of family members: " + family.countFamily());
+        family.getPet().foul();
+        family.getPet().eat();
+        family.getPet().respond();
+        mother.greetPet();
+        mother.describePet();
+        mother.feedPet(true);
+    }
+}
+

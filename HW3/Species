@@ -1,0 +1,40 @@
+public enum Species {
+    DOG(false, 4, true, "Woof"),
+    CAT(false, 4, true, "Meow"),
+    BIRD(true, 2, false, "Tweet"),
+    LIZARD(false, 4, false, "Hiss"),
+    FISH(false, 0, false, "Glub");
+
+    private final boolean canFly;
+    private final int numberOfLegs;
+    private final boolean hasFur;
+    private final String sound;
+
+    Species(boolean canFly, int numberOfLegs, boolean hasFur, String sound) {
+        this.canFly = canFly;
+        this.numberOfLegs = numberOfLegs;
+        this.hasFur = hasFur;
+        this.sound = sound;
+    }
+
+    public boolean canFly() {
+        return canFly;
+    }
+
+    public int getNumberOfLegs() {
+        return numberOfLegs;
+    }
+
+    public boolean hasFur() {
+        return hasFur;
+    }
+
+    public String getSound() {
+        return sound;
+    }
+
+    @Override
+    public String toString() {
+        return name() + " [Can Fly: " + canFly + ", Number of Legs: " + numberOfLegs + ", Has Fur: " + hasFur + ", Sound: " + sound + "]";
+    }
+}
