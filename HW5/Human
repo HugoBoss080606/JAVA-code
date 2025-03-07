@@ -1,0 +1,53 @@
+
+public class Human {
+    private String name;
+    private int iq;
+
+    public Human(String name, int iq) {
+        this.name = name;
+        this.iq = iq;
+    }
+
+    public void greetPet() {
+        System.out.println("Hello, pet!");
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getIq() {
+        return iq;
+    }
+}
+
+
+public final class Man extends Human {
+    public Man(String name, int iq) {
+        super(name, iq);
+    }
+
+    @Override
+    public void greetPet() {
+        System.out.println("Hey buddy!");
+    }
+
+    public void repairCar() {
+        System.out.println("Fixing the car...");
+    }
+}
+
+public final class Woman extends Human {
+    public Woman(String name, int iq) {
+        super(name, iq);
+    }
+
+    @Override
+    public void greetPet() {
+        System.out.println("Hello sweetie!");
+    }
+
+    public void makeup() {
+        System.out.println("Applying makeup...");
+    }
+}

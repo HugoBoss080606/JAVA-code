@@ -1,0 +1,29 @@
+import java.util.Random;
+
+
+public interface HumanCreator {
+    Human bornChild();
+}
+
+
+public class Family implements HumanCreator {
+    private Human father;
+    private Human mother;
+    private String[] maleNames = {"John", "Mike", "Steve"};
+    private String[] femaleNames = {"Anna", "Emily", "Sarah"};
+
+    public Family(Human father, Human mother) {
+        this.father = father;
+        this.mother = mother;
+    }
+
+    @Override
+    public Human bornChild() {
+        Random random = new Random();
+        boolean isMale = random.nextBoolean();
+        String name = isMale ? maleNames[random.nextInt(maleNames.length)] : femaleNames[random.nextInt(femaleNames.length)];
+        int iq = (father.getIq() + mother.getIq()) / 2;
+
+        return isMale ? new Man(name, iq) : new Woman(name, iq);
+    }
+}

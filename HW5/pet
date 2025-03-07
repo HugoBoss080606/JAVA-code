@@ -1,0 +1,77 @@
+// Abstract Pet class
+public abstract class Pet {
+    private Species species;
+
+    public Pet(Species species) {
+        this.species = species != null ? species : Species.UNKNOWN;
+    }
+
+    public void eat() {
+        System.out.println("Eating...");
+    }
+
+    public abstract void respond();
+}
+
+// Interface for foul behavior
+public interface Foulable {
+    void foul();
+}
+
+// Dog class
+public class Dog extends Pet implements Foulable {
+    public Dog(Species species) {
+        super(species);
+    }
+
+    @Override
+    public void respond() {
+        System.out.println("Woof! Woof!");
+    }
+
+    @Override
+    public void foul() {
+        System.out.println("Dog is making a mess...");
+    }
+}
+
+// Fish class
+public class Fish extends Pet {
+    public Fish(Species species) {
+        super(species);
+    }
+
+    @Override
+    public void respond() {
+        System.out.println("Blub blub!");
+    }
+}
+
+// DomesticCat class
+public class DomesticCat extends Pet implements Foulable {
+    public DomesticCat(Species species) {
+        super(species);
+    }
+
+    @Override
+    public void respond() {
+        System.out.println("Meow!");
+    }
+
+    @Override
+    public void foul() {
+        System.out.println("Cat is scratching the furniture...");
+    }
+}
+
+// RoboCat class
+public class RoboCat extends Pet {
+    public RoboCat(Species species) {
+        super(species);
+    }
+
+    @Override
+    public void respond() {
+        System.out.println("Beep beep!");
+    }
+}

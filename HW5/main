@@ -1,0 +1,28 @@
+public class Main {
+    public static void main(String[] args) {
+        // Create a family
+        Human father = new Man("John", 100);
+        Human mother = new Woman("Anna", 110);
+        Family family = new Family(father, mother);
+
+        // Create pets
+        Pet dog = new Dog(Species.DOG);
+        Pet fish = new Fish(Species.FISH);
+
+        // Greet pets
+        father.greetPet();
+        mother.greetPet();
+
+        // Test pet behaviors
+        dog.respond();
+        dog.eat();
+        ((Foulable) dog).foul();
+
+        fish.respond();
+        fish.eat();
+
+        // Test bornChild method
+        Human child = family.bornChild();
+        System.out.println("New child: " + child.getName() + " (IQ: " + child.getIq() + ")");
+    }
+}
