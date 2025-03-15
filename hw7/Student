@@ -1,0 +1,58 @@
+import java.util.Date;
+
+
+class Student implements Comparable<Student> {
+    private int id;
+    private String name;
+    private double grade;
+    private Date birthDate;
+    private String gender;
+
+
+    public Student(int id, String name, double grade, Date birthDate, String gender) {
+        this.id = id;
+        this.name = name;
+        this.grade = grade;
+        this.birthDate = birthDate;
+        this.gender = gender;
+    }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getGrade() {
+        return grade;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+
+    @Override
+    public int compareTo(Student other) {
+        return Integer.compare(this.id, other.id);
+    }
+
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", grade=" + grade +
+                ", birthDate=" + birthDate +
+                ", gender='" + gender + '\'' +
+                '}';
+    }
+}
