@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+interface PerformOperation {
+    boolean check(int a);
+}
+
+public class Solution {
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        int testCases = scanner.nextInt();
+
+       
+        while (testCases-- > 0) {
+            int operation = scanner.nextInt();
+            int number = scanner.nextInt();     
+
+            PerformOperation op;
+            boolean result = false;
+
+           
+            switch (operation) {
+                case 1:
+                    op = isOdd();
+                    result = op.check(number);
+                    System.out.println(result ? "ODD" : "EVEN");
+                    break;
+                case 2:
+                    op = isPrime();
+                    result = op.check(number);
+                    System.out.println(result ? "PRIME" : "COMPOSITE");
+                    break;
+                case 3:
+                    op = isPalindrome();
+                    result = op.check(number);
+                    System.out.println(result ? "PALINDROME" : "NOT PALINDROME");
+                    break;
+                default:
+                    System.out.println("Invalid operation");
+            }
+        }
+        scanner.close();
+    }
+
+    
+    public static PerformOperation isOdd() {
+        return n -> n % 2 != 0;
+    }
+
+   
+    public static PerformOperation isPrime() {
+        return n -> {
+            if (n < 2) return false;
+            for (int i = 2; i * i <= n; i++) {
+                if (n % i == 0) return false;
+            }
+            return true;
+        };
+    }
+
+   
+    public static PerformOperation isPalindrome() {
+        return n -> {
+            String original = Integer.toString(n);
+            String reversed = new StringBuilder(original).reverse().toString();
+            return original.equals(reversed);
+        };
+    }
+}
